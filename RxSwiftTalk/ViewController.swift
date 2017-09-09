@@ -40,6 +40,8 @@ class ViewController: UIViewController {
         
         usernameErrorLabel.isHidden = isValid
         passwordTF.isEnabled = isValid
+        
+        checkButton()
     }
     
     @IBAction func passwordChanged(_ sender: UITextField) {
@@ -51,6 +53,28 @@ class ViewController: UIViewController {
         let isValid = value.characters.count >= 5
         
         passwordErrorLabel.isHidden = isValid
+        
+        checkButton()
+    }
+    
+    func checkButton() {
+        guard let usernameValue = usernameTF.text else {
+            usernameErrorLabel.isHidden = false
+            return
+        }
+        
+        let isUsernameValid = usernameValue.characters.count >= 5
+        
+        guard let passwordValue = passwordTF.text else {
+            passwordErrorLabel.isHidden = false
+            return
+        }
+        
+        let isPasswordValid = passwordValue.characters.count >= 5
+        
+        let areBothValid = isUsernameValid && isPasswordValid
+        
+        button.isEnabled = areBothValid
     }
 }
 
