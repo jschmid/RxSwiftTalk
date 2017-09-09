@@ -22,6 +22,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        usernameErrorLabel.isHidden = true
+        passwordErrorLabel.isHidden = true
     }
 
 }
