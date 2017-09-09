@@ -39,5 +39,16 @@ class ViewController: UIViewController {
         usernameErrorLabel.isHidden = isValid
         passwordTF.isEnabled = isValid
     }
+    
+    @IBAction func passwordChanged(_ sender: UITextField) {
+        guard let value = passwordTF.text else {
+            passwordErrorLabel.isHidden = false
+            return
+        }
+        
+        let isValid = value.characters.count >= 5
+        
+        passwordErrorLabel.isHidden = isValid
+    }
 }
 
