@@ -62,7 +62,14 @@ class ViewController: UIViewController {
                 return URLSession.shared.rx.data(request: request)
             }
             .map { data in String(data: data, encoding: String.Encoding.utf8) }
-            .bind(to: finalTV.rx.text)
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribe(onNext: { result in
+                self.finalTV.text = result
+                self.finalTV.textColor = UIColor.green
+            }, onError: { _ in
+                self.finalTV.text = "Error !"
+                self.finalTV.textColor = UIColor.red
+            })
             .disposed(by: disposeBag)
     }
 
