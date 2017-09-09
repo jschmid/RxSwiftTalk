@@ -31,12 +31,20 @@ class ViewController: UIViewController {
             .map { $0.characters.count >= 5 }
             .shareReplay(1)
         
+        let passwordValid = passwordTF.rx.text.orEmpty
+            .map { $0.characters.count >= 5 }
+            .shareReplay(1)
+        
         usernameValid
             .bind(to: usernameErrorLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
         usernameValid
             .bind(to: passwordTF.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        passwordValid
+            .bind(to: passwordErrorLabel.rx.isHidden)
             .disposed(by: disposeBag)
     }
 
