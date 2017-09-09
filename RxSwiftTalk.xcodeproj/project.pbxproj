@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BA6042B241708078133A697 /* Pods_RxSwiftTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3A14CE5AFDFF0E6C76F982 /* Pods_RxSwiftTalk.framework */; };
 		DD04F2D41F6436BD006069DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD04F2D31F6436BD006069DB /* AppDelegate.swift */; };
 		DD04F2D61F6436BD006069DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD04F2D51F6436BD006069DB /* ViewController.swift */; };
 		DD04F2D91F6436BD006069DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD04F2D71F6436BD006069DB /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B3A14CE5AFDFF0E6C76F982 /* Pods_RxSwiftTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A26B91025047648955D624E9 /* Pods-RxSwiftTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTalk/Pods-RxSwiftTalk.release.xcconfig"; sourceTree = "<group>"; };
+		D968DE16D97097C73D0885A3 /* Pods-RxSwiftTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftTalk/Pods-RxSwiftTalk.debug.xcconfig"; sourceTree = "<group>"; };
 		DD04F2D01F6436BD006069DB /* RxSwiftTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD04F2D31F6436BD006069DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD04F2D51F6436BD006069DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BA6042B241708078133A697 /* Pods_RxSwiftTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E0174F977D2A2621E1C96D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B3A14CE5AFDFF0E6C76F982 /* Pods_RxSwiftTalk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		42F3CA746561F0E241BC494A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D968DE16D97097C73D0885A3 /* Pods-RxSwiftTalk.debug.xcconfig */,
+				A26B91025047648955D624E9 /* Pods-RxSwiftTalk.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DD04F2C71F6436BD006069DB = {
 			isa = PBXGroup;
 			children = (
 				DD04F2D21F6436BD006069DB /* RxSwiftTalk */,
 				DD04F2D11F6436BD006069DB /* Products */,
+				42F3CA746561F0E241BC494A /* Pods */,
+				1E0174F977D2A2621E1C96D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD04F2E21F6436BD006069DB /* Build configuration list for PBXNativeTarget "RxSwiftTalk" */;
 			buildPhases = (
+				4842B0BC4EC4FC7B5361E4C1 /* [CP] Check Pods Manifest.lock */,
 				DD04F2CC1F6436BD006069DB /* Sources */,
 				DD04F2CD1F6436BD006069DB /* Frameworks */,
 				DD04F2CE1F6436BD006069DB /* Resources */,
+				997BF794F4EEA85E15753258 /* [CP] Embed Pods Frameworks */,
+				DB7760877C1A7BF92AAD9290 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4842B0BC4EC4FC7B5361E4C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RxSwiftTalk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		997BF794F4EEA85E15753258 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftTalk/Pods-RxSwiftTalk-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftTalk/Pods-RxSwiftTalk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB7760877C1A7BF92AAD9290 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftTalk/Pods-RxSwiftTalk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DD04F2CC1F6436BD006069DB /* Sources */ = {
@@ -261,6 +344,7 @@
 		};
 		DD04F2E31F6436BD006069DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D968DE16D97097C73D0885A3 /* Pods-RxSwiftTalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8393363HT3;
@@ -274,6 +358,7 @@
 		};
 		DD04F2E41F6436BD006069DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A26B91025047648955D624E9 /* Pods-RxSwiftTalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8393363HT3;
