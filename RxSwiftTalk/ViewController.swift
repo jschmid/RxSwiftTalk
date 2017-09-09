@@ -35,6 +35,9 @@ class ViewController: UIViewController {
             .map { $0.characters.count >= 5 }
             .shareReplay(1)
         
+        let everythingValid = Observable.combineLatest(usernameValid, passwordValid) { $0 && $1 }
+            .shareReplay(1)
+        
         usernameValid
             .bind(to: usernameErrorLabel.rx.isHidden)
             .disposed(by: disposeBag)
@@ -45,6 +48,10 @@ class ViewController: UIViewController {
         
         passwordValid
             .bind(to: passwordErrorLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        everythingValid
+            .bind(to: button.rx.isEnabled)
             .disposed(by: disposeBag)
     }
 
