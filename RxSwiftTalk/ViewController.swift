@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
+    
+    var disposeBag = DisposeBag()
     
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
@@ -22,6 +26,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let usernameValid = usernameTF.rx.text.orEmpty
+            .map { $0.characters.count >= 5 }
+            .shareReplay(1)
+        
+        usernameValid
+            .bind(to: usernameErrorLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        usernameValid
+            .bind(to: passwordTF.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
 
 }
