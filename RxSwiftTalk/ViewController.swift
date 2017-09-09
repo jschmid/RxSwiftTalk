@@ -53,6 +53,17 @@ class ViewController: UIViewController {
         everythingValid
             .bind(to: button.rx.isEnabled)
             .disposed(by: disposeBag)
+        
+        button.rx.tap
+            .flatMapLatest { _ -> Observable<Data> in
+                let url = URL(string: "https://www.random.org/integers/?num=1&min=1000&max=9999&col=1&base=10&format=plain&rnd=new")
+                let request = URLRequest(url: url!)
+                
+                return URLSession.shared.rx.data(request: request)
+            }
+            .map { data in String(data: data, encoding: String.Encoding.utf8) }
+            .bind(to: finalTV.rx.text)
+            .disposed(by: disposeBag)
     }
 
 }
