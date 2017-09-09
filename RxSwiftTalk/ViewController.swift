@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         
         usernameErrorLabel.isHidden = true
         passwordErrorLabel.isHidden = true
+        passwordTF.isEnabled = false
     }
 
     @IBAction func usernameChanged(_ sender: UITextField) {
@@ -36,6 +37,7 @@ class ViewController: UIViewController {
         let isValid = value.characters.count >= 5
         
         usernameErrorLabel.isHidden = isValid
+        passwordTF.isEnabled = isValid
     }
 }
 
