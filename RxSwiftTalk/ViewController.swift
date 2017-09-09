@@ -68,5 +68,31 @@ class ViewController: UIViewController {
         
         button.isEnabled = areBothValid
     }
+    
+    @IBAction func buttonClicked(_ sender: UIButton) {
+        let url = URL(string: "https://www.random.org/integers/?num=1&min=1000&max=9999&col=1&base=10&format=plain&rnd=new")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: url!) { (data, response, error) in
+            if let _ = error {
+                DispatchQueue.main.async {
+                    self.finalTV.text = "Error !"
+                    self.finalTV.textColor = UIColor.red
+                }
+                return
+            }
+            guard let data = data else {
+                return
+            }
+
+            let result = String(data: data, encoding: String.Encoding.utf8)
+            
+            DispatchQueue.main.async {
+                self.finalTV.text = result
+                self.finalTV.textColor = UIColor.green
+            }
+        }
+        task.resume()
+    }
 }
 
