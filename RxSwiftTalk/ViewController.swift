@@ -31,8 +31,15 @@ class ViewController: UIViewController {
             .map { $0.characters.count >= 5 }
             .shareReplay(1)
         
-        let passwordValid = passwordTF.rx.text.orEmpty
+        let passwordLongEnough = passwordTF.rx.text.orEmpty
             .map { $0.characters.count >= 5 }
+            .shareReplay(1)
+        
+        let passwordDoesNotContainUsername = Observable.combineLatest(usernameTF.rx.text.orEmpty, passwordTF.rx.text.orEmpty)
+            .map { (username, password) -> Bool in !password.contains(username) }
+            .shareReplay(1)
+        
+        let passwordValid = Observable.combineLatest(passwordLongEnough, passwordDoesNotContainUsername) { $0 && $1 }
             .shareReplay(1)
         
         let everythingValid = Observable.combineLatest(usernameValid, passwordValid) { $0 && $1 }
