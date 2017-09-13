@@ -31,13 +31,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func usernameChanged(_ sender: UITextField) {
-        usernameErrorLabel.isHidden = isUsernameValid
-        passwordTF.isEnabled = isUsernameValid
-        
-        checkButton()
+        fuckItLetsPutEveryThingInOneFunction()
     }
     
     @IBAction func passwordChanged(_ sender: UITextField) {
+        fuckItLetsPutEveryThingInOneFunction()
+    }
+    
+    private func fuckItLetsPutEveryThingInOneFunction() {
+        usernameErrorLabel.isHidden = isUsernameValid
+        passwordTF.isEnabled = isUsernameValid
         passwordErrorLabel.isHidden = isPasswordValid
         
         checkButton()
