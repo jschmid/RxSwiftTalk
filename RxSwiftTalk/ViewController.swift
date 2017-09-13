@@ -54,13 +54,18 @@ class ViewController: UIViewController {
     }
     
     var isPasswordValid: Bool {
-        guard let value = passwordTF.text else {
+        guard let passwordValue = passwordTF.text else {
             return false
         }
         
-        let isValid = value.characters.count >= 5
+        guard let usernameValue = usernameTF.text else {
+            return false
+        }
         
-        return isValid
+        let longEnough = passwordValue.characters.count >= 5
+        let notUsername = !passwordValue.contains(usernameValue)
+        
+        return longEnough && notUsername
     }
     
     func checkButton() {
